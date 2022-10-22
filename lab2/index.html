@@ -36,7 +36,7 @@
             </div>
 			<div class="field">
                 <label for="ścieżka_litera_dysku">Ścieżka litera dysku</label>
-                <input type="text" pattern="([a-zA-Z]:\\(windows|winnt|win|dos|msdos))(\\[0-9a-zA-Z]+)?" placeholder="C:\windows\Temp" id="ścieżka_litera_dysku" required>
+                <input type="text" pattern="([a-zA-Z]:\\(?i)(windows|winnt|win|dos|msdos)(?-i)(?!\w))(\\[0-9a-zA-Z]+)?" placeholder="C:\windows\Temp" id="ścieżka_litera_dysku" required>
             </div>
 			<div class="field">
                 <label for="ścieżka_do_pliku_w_katalogu_etc">Ścieżka do pliku w katalogu /etc/</label>
