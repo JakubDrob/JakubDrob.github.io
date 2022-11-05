@@ -40,6 +40,14 @@ function getRandomColor() {
 	document.getElementById('box').style.background = color;
   }
 
+document.addEventListener("dragstart", ({target}) => {
+       
+  });
+
+  document.addEventListener("dragover", (event) => {
+      event.preventDefault();
+  });
+
   document.addEventListener("dragstart", ({target}) => {
       if (target.className == "dropelement") {
 		  element = target;
