@@ -3,6 +3,10 @@ let elementId;
 let elementList;
 let elementIndex;
 let dropIndex;
+let height = 4;
+let width = 8;
+let array;
+let color;
 
 
   document.addEventListener("dragstart", ({target}) => {
