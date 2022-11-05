@@ -9,6 +9,23 @@ let array;
 let color;
 
 
+ function initializeGrid(event) {
+	let platform = document.getElementById('platform');
+	array = new Array(height);
+	for (var i = 0; i < height; i++) {
+	 array[i] = new Array(width);
+	 let newTr = document.createElement("tr");
+	 platform.appendChild(newTr);
+	 for (var j = 0; j < width; j++) {
+		array[i][j] = false;
+		let newTd = document.createElement("td");
+		newTd.id = i + "_" + j;
+		newTd.className = "cell";
+		newTr.appendChild(newTd);
+	 }
+    }
+   }
+
   document.addEventListener("dragstart", ({target}) => {
       if (target.className == "dropelement") {
 		  element = target;
