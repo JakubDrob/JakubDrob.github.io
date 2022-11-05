@@ -1,6 +1,7 @@
 <html>
     <head>
 		<script src="drag.js"></script>
+		<link rel="stylesheet" href="style.css"/>
         <title>IPM lab 3</title>
     </head>
 	<body onLoad="initializeGrid(event)">
@@ -24,7 +25,7 @@
 		<div class="container">
 			<table class="platform" id="platform"/>
 			<div class="generator">
-				<button type="button" onclick="setRandomColor">Generate box</button>
+				<button type="button" onclick="setRandomColor()">Generate box</button>
 				<div id="box" class="box" draggable="true"/>
 			</div>
 		</div>
