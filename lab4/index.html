@@ -36,6 +36,47 @@
     <div id="tableDiv"></div>
 	 <br />
     <script type="text/javascript">
+	 window.indexedDB =
+        window.indexedDB ||
+        window.mozIndexedDB ||
+        window.webkitIndexedDB ||
+        window.msIndexedDB;
+
+      window.IDBTransaction =
+        window.IDBTransaction ||
+        window.webkitIDBTransaction ||
+        window.msIDBTransaction;
+      window.IDBKeyRange =
+        window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
+
+      if (!window.indexedDB) {
+        window.alert(
+          "Your browser doesn't support a stable version of IndexedDB."
+        );
+      }
+
+      const clientData = [
+        {
+          name: "Marek",
+          lastName: "Marek",
+          age: "34",
+          email: "marek@gmail.com",
+          pesel: '14356678901',
+          addres: "Druida 5",
+		  postcode: "76-324",
+          phoneNumber: "374921234"
+        },
+        {
+          name: "Pawel",
+          lastName: "Majster",
+          age: "20",
+          email: "pawel@gmail.com",
+          pesel: '44356678901',
+          address: "Malpy 24",
+		  postcode: "45-999",
+          phoneNumber: "540423451"
+        },
+      ];
 	let db;
       let request = window.indexedDB.open("newDatabase", 1);
 
