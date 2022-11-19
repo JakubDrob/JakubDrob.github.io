@@ -90,7 +90,7 @@
       };
 	   request.onupgradeneeded = function (event) {
         var db = event.target.result;
-        var objectStore = db.createObjectStore("client", {
+        var objectStore2 = db.createObjectStore("client", {
           autoIncrement: true,
         });
 
@@ -104,7 +104,7 @@
         objectStore.createIndex("phoneNumber", "phoneNumber", { unique: true });
 		
 		 for (var i in clientData) {
-          objectStore.add(clientData[i]);
+          objectStore2.add(clientData[i]);
         }
       };
 	   function add(event) {
@@ -114,7 +114,7 @@
 
         var request = db
           .transaction(["client"], "readwrite")
-          .objectStore("client")
+          .objectStore2("client")
           .add({
             name: formElements[0].value,
             lastName: formElements[1].value,
@@ -154,9 +154,9 @@
         }
       }
 	 function generateTable(table, filterItems = []) {
-        let objectStore = db.transaction("client").objectStore("client");
+        let objectStore2 = db.transaction("client").objectStore("client");
 
-        objectStore.openCursor().onsuccess = function (event) {
+        objectStore2.openCursor().onsuccess = function (event) {
           var cursor = event.target.result;
 		  
 			 if (cursor) {
