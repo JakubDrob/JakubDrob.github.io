@@ -61,6 +61,11 @@
 		objectStore.createIndex("postcode", "postcode", { unique: false });
         objectStore.createIndex("address", "address", { unique: false });
         objectStore.createIndex("phoneNumber", "phoneNumber", { unique: true });
+		
+		 for (var i in clientData) {
+          objectStore.add(clientData[i]);
+        }
+      };
 	 </script>
   </body>
 </html>
