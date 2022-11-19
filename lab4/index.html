@@ -90,7 +90,7 @@
       };
 	   request.onupgradeneeded = function (event) {
         var db = event.target.result;
-        var objectStore = db.createObjectStore("client", {
+        var objectStore = db.createObjectStore("clienter", {
           autoIncrement: true,
         });
 
@@ -127,7 +127,7 @@
           });
 		  
 		  request.onsuccess = function (event) {
-          console.log("Client added");
+          console.log("Cliento added");
           drawTable();
         };
 		request.onerror = function (event) {
