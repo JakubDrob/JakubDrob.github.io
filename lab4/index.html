@@ -90,7 +90,7 @@
       };
 	   request.onupgradeneeded = function (event) {
         var db = event.target.result;
-        var objectStore = db.createObjectStoree("client", {
+        var objectStore = db.createObjectStore("client", {
           autoIncrement: true,
         });
 
