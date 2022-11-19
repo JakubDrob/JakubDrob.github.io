@@ -99,8 +99,8 @@
         objectStore.createIndex("age", "age", { unique: false });
         objectStore.createIndex("email", "email", { unique: true });
         objectStore.createIndex("pesel", "pesel", { unique: true });
-		objectStore.createIndex("postcode", "postcode", { unique: false });
         objectStore.createIndex("address", "address", { unique: false });
+		objectStore.createIndex("postcode", "postcode", { unique: false });
         objectStore.createIndex("phoneNumber", "phoneNumber", { unique: true });
 		
 		 for (var i in clientData) {
@@ -122,7 +122,8 @@
             email: formElements[3].value,
             pesel: formElements[4].value,
             address: formElements[5].value,
-            phoneNumber: formElements[6].value,
+			postcode: formElements[6].value,
+            phoneNumber: formElements[7].value,
           });
 		  
 		  request.onsuccess = function (event) {
@@ -135,6 +136,23 @@
           );
         };
 	}
+	
+	function generateTableHead(table, data) {
+        let thead = table.createTHead();
+        let row = thead.insertRow();
+
+        let th = document.createElement("th");
+        let text = document.createTextNode("id");
+        th.appendChild(text);
+        row.appendChild(th);
+
+        for (let key of data) {
+          let th = document.createElement("th");
+          let text = document.createTextNode(key);
+          th.appendChild(text);
+          row.appendChild(th);
+        }
+      }
 	 </script>
   </body>
 </html>
