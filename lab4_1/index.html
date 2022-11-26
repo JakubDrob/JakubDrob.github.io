@@ -295,7 +295,36 @@
           };
         };
       }
-	
+	  
+	  
+	  
+	 function fillEditData(id) {
+        document.getElementById("submitBtn").disabled = true;
+        document.getElementById("editBtn").disabled = false;
+
+        var objectStore = db
+          .transaction(["client"], "readwrite")
+          .objectStore("client");
+
+        var request = objectStore.get(id);
+        request.onerror = function (event) {
+          console.log("Something went wrong");
+        };
+        request.onsuccess = function (event) {
+          let data = event.target.result;
+
+          document.getElementById("idInput").value = id;
+          document.getElementById("nameInput").value = data.name;
+          document.getElementById("lastNameInput").value = data.lastName;
+          document.getElementById("ageInput").value = data.age;
+          document.getElementById("emailInput").value = data.email;
+          document.getElementById("peselInput").value = data.pesel;
+          document.getElementById("addressInput").value = data.address;
+		  document.getElementById("pastcodeInput").value = data.postcode;
+          document.getElementById("phoneNumberInput").value = data.phoneNumber;
+        };
+      }
+	  
 	function generateTableHead(table, data) {
         let thead = table.createTHead();
         let row = thead.insertRow();
