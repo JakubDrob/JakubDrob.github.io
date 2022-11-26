@@ -6,8 +6,7 @@
   </head>
   <body>
     <form id="addForm" onsubmit="return add(event)">
-	  <label for="id">Id:</label>
-      <input id="idInput" name="id" type="number" />
+	<input id="idInput" name="id" type="number" style="visibility: hidden" />
       <br />
       <label for="name">Name:</label>
       <input id="nameInput" class="data" name="name" type="text" required />
@@ -417,35 +416,30 @@
       }
 	  
 	   function insertRandomCell() {
-        minAge = Math.ceil(18);
-        maxAge = Math.floor(100);
+        let minAge = Math.ceil(18);
+        let maxAge = Math.floor(100);
 
-        var request = db
-          .transaction(["client"], "readwrite")
-          .objectStore("client")
-          .add({
-            name: NAMES[Math.floor(Math.random() * NAMES.length)],
-            lastName: SURNAMES[Math.floor(Math.random() * SURNAMES.length)],
-            age: `${Math.floor(Math.random() * (maxAge - minAge) + minAge)}`,
-            email: `${NAMES[
-              Math.floor(Math.random() * NAMES.length)
-            ].toLowerCase()}@gmail.com`,
-            pesel: `${Math.floor(10000000000 + Math.random() * 90000000000)}`,
-            address: ADDRESSES[Math.floor(Math.random() * ADDRESSES.length)],
-			postcode: POSTCODES[Math.floor(Math.random() * POSTCODES.length)],
-            phoneNumber: `${Math.floor(100000000 + Math.random() * 700000000)}`,
-          });
+        let formElements = document.getElementById("addForm");
 
-        request.onsuccess = function (event) {
-          console.log("Client added");
-          drawTable();
-        };
-
-        request.onerror = function (event) {
-          alert(
-            "Unable to add data\r\ user with that (email | pesel | phoneNumber) aready exist in your database! Those are the unique fileds"
-          );
-        };
+        formElements[1].value = NAMES[Math.floor(Math.random() * NAMES.length)];
+        formElements[2].value =
+          SURNAMES[Math.floor(Math.random() * SURNAMES.length)];
+        formElements[3].value = `${Math.floor(
+          Math.random() * (maxAge - minAge) + minAge
+        )}`;
+        formElements[4].value = `${NAMES[
+          Math.floor(Math.random() * NAMES.length)
+        ].toLowerCase()}@gmail.com`;
+        formElements[5].value = `${Math.floor(
+          10000000000 + Math.random() * 90000000000
+        )}`;
+        formElements[6].value =
+          ADDRESSES[Math.floor(Math.random() * ADDRESSES.length)];
+		formElements[7].value =
+		  POSTCODES[Math.floor(Math.random() * POSTCODES.length)];
+        formElements[8].value = `${Math.floor(
+          100000000 + Math.random() * 700000000
+        )}`;
       }
 	 </script>
   </body>
