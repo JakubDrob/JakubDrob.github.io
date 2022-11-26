@@ -67,6 +67,7 @@
       <input id="submitBtn" type="submit" value="Add entry" />
     </form>
 	 <button id="editBtn" onclick="editData(event)" disabled>Edit entry</button>
+	 <button id="cancelBtn" onclick="cancelEdit(event)" disabled>Cancel Edit</button>
     <div id="jsonForm"></div>
     <br />
     <br />
@@ -304,6 +305,12 @@
         };
       }
 	  
+	  function cancelEdit(event) {
+        event.preventDefault();
+        document.getElementById("editBtn").disabled = true;
+        document.getElementById("cancelBtn").disabled = true;
+        document.getElementById("submitBtn").disabled = false;
+      }
 	  
 	  
 	 function fillEditData(id) {
