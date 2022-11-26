@@ -238,16 +238,6 @@
         .addEventListener("input", (event) => {
           drawTable(event.target.value.split(" "));
         });
-
-      document.getElementById("idInput").addEventListener("input", (event) => {
-        if (event.target.value) {
-          document.getElementById("submitBtn").disabled = true;
-          document.getElementById("editBtn").disabled = false;
-        } else {
-          document.getElementById("submitBtn").disabled = false;
-          document.getElementById("editBtn").disabled = true;
-        }
-      });
 	  
 	  function remove(id) {
        let request = db
@@ -316,6 +306,7 @@
 	 function fillEditData(id) {
         document.getElementById("submitBtn").disabled = true;
         document.getElementById("editBtn").disabled = false;
+		document.getElementById("cancelBtn").disabled = false;
 
         var objectStore = db
           .transaction(["client"], "readwrite")
@@ -335,7 +326,7 @@
           document.getElementById("emailInput").value = data.email;
           document.getElementById("peselInput").value = data.pesel;
           document.getElementById("addressInput").value = data.address;
-		  document.getElementById("pastcodeInput").value = data.postcode;
+		  document.getElementById("postcodeInput").value = data.postcode;
           document.getElementById("phoneNumberInput").value = data.phoneNumber;
         };
       }
