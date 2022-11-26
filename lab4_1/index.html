@@ -141,6 +141,13 @@
           );
         };
 	}
+	 function search(event) {
+        event.preventDefault();
+
+        let searchInputs = document.getElementById("searchBar").value.split(' ');
+        
+        drawTable(searchInputs);
+      }
 	
 	function generateTableHead(table, data) {
         let thead = table.createTHead();
