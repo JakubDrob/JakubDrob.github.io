@@ -154,6 +154,15 @@
         "Ostra",
         "Gruba",
       ];
+	  const POSTCODES = [
+        "34-344",
+        "45-456",
+        "29-456",
+        "84-245",
+        "77-777",
+        "34-856",
+        "45-725",
+      ];
 	  
 	  let db;
       let request = window.indexedDB.open("newDatabase", 2);
@@ -405,6 +414,38 @@
         generateTable(table, filterItems);
         generateTableHead(table, data);
         document.getElementById("tableDiv").appendChild(table);
+      }
+	  
+	   function insertRandomCell() {
+        minAge = Math.ceil(18);
+        maxAge = Math.floor(100);
+
+        var request = db
+          .transaction(["client"], "readwrite")
+          .objectStore("client")
+          .add({
+            name: NAMES[Math.floor(Math.random() * NAMES.length)],
+            lastName: SURNAMES[Math.floor(Math.random() * SURNAMES.length)],
+            age: `${Math.floor(Math.random() * (maxAge - minAge) + minAge)}`,
+            email: `${NAMES[
+              Math.floor(Math.random() * NAMES.length)
+            ].toLowerCase()}@gmail.com`,
+            pesel: `${Math.floor(10000000000 + Math.random() * 90000000000)}`,
+            address: ADDRESSES[Math.floor(Math.random() * ADDRESSES.length)],
+			postcode: POSTCODES[Math.floor(Math.random() * POSTCODES.length)],
+            phoneNumber: `${Math.floor(100000000 + Math.random() * 700000000)}`,
+          });
+
+        request.onsuccess = function (event) {
+          console.log("Client added");
+          drawTable();
+        };
+
+        request.onerror = function (event) {
+          alert(
+            "Unable to add data\r\ user with that (email | pesel | phoneNumber) aready exist in your database! Those are the unique fileds"
+          );
+        };
       }
 	 </script>
   </body>
