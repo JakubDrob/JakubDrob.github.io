@@ -364,7 +364,6 @@
                 return;
               }
             }
-		console.log(cursor.value)
 
             let row = table.insertRow();
             let cell = row.insertCell();
@@ -382,6 +381,12 @@
             removeButton.setAttribute("onclick", `remove(${cursor.key})`);
             removeButton.innerHTML = "remove";
             cell.appendChild(removeButton);
+			
+			let editButton = document.createElement("button");
+            editButton.setAttribute("id", "editButton" + cursor.key);
+            editButton.setAttribute("onclick", `fillEditData(${cursor.key})`);
+            editButton.innerHTML = "edit";
+            cell.appendChild(editButton);
 
             cursor.continue();
           } else {
