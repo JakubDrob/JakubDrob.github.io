@@ -175,11 +175,11 @@
         objectStore.createIndex("name", "name", { unique: false });
         objectStore.createIndex("lastName", "lastName", { unique: false });
         objectStore.createIndex("age", "age", { unique: false });
-        objectStore.createIndex("email", "email", { unique: true });
-        objectStore.createIndex("pesel", "pesel", { unique: true });
+        objectStore.createIndex("email", "email", { unique: false });
+        objectStore.createIndex("pesel", "pesel", { unique: false });
         objectStore.createIndex("address", "address", { unique: false });
 		objectStore.createIndex("postcode", "postcode", { unique: false });
-        objectStore.createIndex("phoneNumber", "phoneNumber", { unique: true });
+        objectStore.createIndex("phoneNumber", "phoneNumber", { unique: false });
 		
 		 for (var i in clientData) {
           objectStore.add(clientData[i]);
@@ -194,18 +194,18 @@
           .transaction(["client"], "readwrite")
           .objectStore("client")
           .add({
-            name: formElements[0].value,
-            lastName: formElements[1].value,
-            age: formElements[2].value,
-            email: formElements[3].value,
-            pesel: formElements[4].value,
-            address: formElements[5].value,
-			postcode: formElements[6].value,
-            phoneNumber: formElements[7].value,
+            name: formElements[1].value,
+            lastName: formElements[2].value,
+            age: formElements[3].value,
+            email: formElements[4].value,
+            pesel: formElements[5].value,
+            address: formElements[6].value,
+			postcode: formElements[7].value,
+            phoneNumber: formElements[8].value,
           });
 		  
 		  request.onsuccess = function (event) {
-          console.log("Cliento added");
+          console.log("Client added");
           drawTable();
         };
 		request.onerror = function (event) {
@@ -217,7 +217,9 @@
 	 function search(event) {
         event.preventDefault();
 
-        let searchInputs = document.getElementById("searchBar").value.split(' ');
+        let searchInputs = document
+          .getElementById("searchBar")
+          .value.split(" ");
         
         drawTable(searchInputs);
       }
