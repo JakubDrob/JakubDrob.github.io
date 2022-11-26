@@ -224,6 +224,22 @@
         drawTable(searchInputs);
       }
 	  
+	  document
+        .getElementById("searchBar")
+        .addEventListener("input", (event) => {
+          drawTable(event.target.value.split(" "));
+        });
+
+      document.getElementById("idInput").addEventListener("input", (event) => {
+        if (event.target.value) {
+          document.getElementById("submitBtn").disabled = true;
+          document.getElementById("editBtn").disabled = false;
+        } else {
+          document.getElementById("submitBtn").disabled = false;
+          document.getElementById("editBtn").disabled = true;
+        }
+      });
+	  
 	  function remove(id) {
        let request = db
          .transaction(["client"], "readwrite")
